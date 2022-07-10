@@ -15,8 +15,8 @@
 			<td>
 				<h4 th:if="${recipe.getUser_email() != 'barb@barb.com'}" th:text="'Crafted with love by ' + ${#strings.arraySplit(recipe.getUser_email(), '@')[0]}"></h4>
 				<h4 th:if="${recipe.getUser_email() == 'barb@barb.com'}" th:text="'Crafted with love by Grandma Barb'"></h4>
-			<td>
-			<td><img th:src="@{{img}(img=recipes.image)}"onerror="this.style.display='none'" /></td>
+				<img style="width: 80%;border-radius:20px;" th:src="@{{img}(img=${recipe.image})}"
+				onerror="this.style.display='none'" />
 		</tr>
 		<tr>
 			<td id="whatever">
