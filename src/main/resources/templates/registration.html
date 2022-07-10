@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<link rel="stylesheet" href="/css/styles.css">
+<title>Registration</title>
+</head>
+
+<body>
+	<div th:insert="navbar :: navbar"></div>
+	<form th:action="@{/registration}" th:object="${user}" method="POST">
+		<table style="width: 40%;">
+			<tr style="height: 5%; text-align: center;">
+				<td colspan=2 style="font-size: 1.2rem;"><h2>Register</h2></td>
+			</tr>
+			<tr>
+				<td style="text-align:center;font-size:120%;margin-left:5%;">Email:</td>
+				<td><input type="email" style="width:100%;" th:field="*{email}" required
+					placeholder="user@example.com" /></td>
+				<td th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Email
+					Error</td>
+			</tr>
+			<tr>
+				<td style="text-align:center;font-size:120%;margin-left:5%;">Password:</td>
+				<td><input type="password" style="width:100%;" th:field="*{password}" required
+					placeholder="Password" /></td>
+				<td th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Password
+					Error</td>
+			</tr>
+			<tr>
+				<td><button type="submit">Submit</button></td>
+			<tr>
+				<td colspan=2><span style="color:white;">Already
+						have an account? <a class="sub-user" href="/" th:href="@{/login}">Log
+							in</a>
+				</span></td>
+			</tr>
+		</table>
+	</form>
+	<br>
+	<div th:if="${param.error}">
+		<div class="alert alert-info center">Invalid username or
+			password!</div>
+	</div>
+	<div th:if="${param.success}">
+		<div class="alert alert-info center">Welcome to the application!</div>
+	</div>
+
+</body>
+
+</html>

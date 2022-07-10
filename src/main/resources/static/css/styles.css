@@ -1,0 +1,247 @@
+@import
+	url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap')
+	;
+
+* {
+	font-family: 'Roboto', sans-serif;
+	font-size:large;
+}
+
+html {
+	height: 100%;
+	background: url("/img/waltonhighschool.jpg");
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-size: cover;
+}
+
+.nav-link{
+	color:white;
+}
+
+.username{
+	color:white;
+}
+
+.username:hover {
+	background-color: #333;
+}
+
+body {
+	width: 70%;
+	min-width:400px;
+	margin: auto;
+	margin-top: 0px;
+	margin-bottom: 0px;
+	padding-top: 10px;
+	min-height: 180%;
+	color: white;
+	text-align: center;
+}
+
+ul {
+	position: fixed;
+	left: 0px;
+	top: 0px;
+	width: 100%;
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+	background-color: #333;
+	list-style-type: none;
+}
+
+li {
+	float: left;
+}
+
+li a {
+	display: block;
+	color: white;
+	text-align: center;
+	padding: 14px 16px;
+	text-decoration: none;
+}
+
+li a:hover {
+	background-color: #111;
+}
+
+#email{
+	padding-left:2%;
+}
+
+#username{
+	padding-left:2%;
+}
+
+#password{
+	padding-left:2%;
+}
+
+button{
+	color:white;
+	border-radius:20px;
+	padding:10px;
+	font-size:large;
+	border:none;
+	transition:1s;
+	border:none;
+	background-color:rgb(170, 20, 20);
+}
+
+button:hover{
+	background-color:#171717;
+	color:white;
+	transition:1s
+}
+
+a.sub-user{
+	text-decoration:none;
+	color:rgb(170, 20, 20);
+}
+
+h1, h2, h4 {
+	font-size:xx-large;
+	padding: 1rem;
+	margin: auto;
+	width:50%;
+	background-color: rgb(30, 30, 30, 90%);
+	box-shadow: 5px 5px 5px black;
+	border-radius: 20px;
+}
+
+span{
+	color:rgb(170, 20, 20);
+}
+
+#header{
+	margin-top:5%;
+}
+
+table {
+	margin: auto;
+	margin-top: 10%;
+	background-color: rgb(30, 30, 30, 90%);
+	box-shadow: 5px 5px 5px black;
+	border-radius: 20px;
+	width:80%;
+	min-width:400px;
+}
+
+textarea{
+	width:90%;
+	height:5rem;
+	border-radius:10px;
+	padding-left:2%;
+}
+
+tr {
+	display:flex;
+	justify-content:center;
+	padding: 1rem;
+	margin: 1rem 1rem 1rem 1rem;
+	text-align: center;
+	align-items: center;
+}
+
+tr div{
+	display:flex;
+	flex-direction:row;
+	justify-content:center;
+	align-items:baseline;
+	flex-wrap:wrap;
+	width:100%;
+	padding-top:2%;
+	padding-bottom:2%;
+	background-color: rgb(30, 30, 30, 90%);
+	box-shadow: 5px 5px 5px black;
+	border-radius: 20px;
+}
+
+label{
+	font-size:1.5rem;
+}
+
+input{
+	border-radius:20px;
+	padding-left:1%;
+}
+
+tr div input{
+	height:1.5rem;
+	width:15rem;
+	margin-left:4px;
+	margin-right:4px;
+}
+
+#ingredients{
+	height:1.5rem;
+	margin-left:2px;
+}
+
+#ingredient_amounts{
+	width:3.5rem;
+	border-radius:20px;
+}
+
+#measurement_labels{
+	width:5rem;
+	border-radius:10px;
+}
+
+tr div select{
+	width:40%;
+	border-radius:10px;
+}
+
+#name{
+	padding: 0.25rem;
+	padding-left:2%;
+	width:50%;
+}
+
+#recipeType{
+	padding: 0.25rem;
+	border-radius:10px;
+	width:30%;
+}
+
+td {
+	width: 100%;
+	height: 25%;
+	display: block;
+	text-align: center;
+	align-items: center;
+}
+
+#button{
+	border-radius:20px;
+	padding:10px;
+	font-size:large;
+	border:none;
+	transition:1s;
+	color:white;
+	background-color:rgb(170, 20, 20);
+}
+
+#button:hover{
+	background-color:#171717;
+	transition:1s
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background-color: transparent;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.4);
+    border-radius: 10px;
+}

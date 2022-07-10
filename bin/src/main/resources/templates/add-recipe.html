@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>New Recipe</title>
+</head>
+
+<body>
+<form action="#" th:action="@{/addRecipe}" th:object="${recipe}"
+      method="POST">
+    <table>
+        <tr>
+            <td>
+                <label>Recipe name</label>
+                <input style="width: 20%;" type="text" th:field="*{name}" required/>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label>Recipe Type</label>
+                <select style="width: 20%;" th:field="*{recipeType}" required>
+                    <option th:value="Breakfast">Breakfast</option>
+                    <option th:value="Lunch">Lunch</option>
+                    <option th:value="Dinner">Dinner</option>
+                    <option th:value="Dessert">Dessert</option>
+                    <option th:value="Snack">Snack</option>
+                    <option th:value="Other">Other</option>
+                </select>
+            </td>
+        </tr>
+        <tr id="addIngredients">
+            <td>
+                <label>Ingredient</label>
+                <input style="width: 10%" type="text" th:field="*{ingredients}" required/>
+                <label>Amount</label>
+                <input style="width: 10%" type="number" th:field="*{ingredient_amounts}" required/>
+                <label>Measurement</label>
+                <select style="width: 10%" th:field="*{measurement_labels}" required>
+                    <option th:value="Milliliter">Milliliter</option>
+                    <option th:value="Liter">Liter</option>
+                    <option th:value="Teaspoon">Teaspoon</option>
+                    <option th:value="Tablespoon">Tablespoon</option>
+                    <option th:value="Cup">Cup</option>
+                    <option th:value="Pint">Pint</option>
+                    <option th:value="Quart">Quart</option>
+                    <option th:value="Gallon">Gallon</option>
+                    <option th:value="Milligram">Milligram</option>
+                    <option th:value="Gram">Gram</option>
+                    <option th:value="Kilogram">Kilogram</option>
+                    <option th:value="Ounce">Ounce</option>
+                    <option th:value="Pound">Pound</option>
+                    <option th:value="Whole">Whole</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input type="button" onclick="createNewElement()" value="Add More"/>
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                <button type="submit">Submit</button>
+            </td>
+        </tr>
+    </table>
+</form>
+<script>
+    function createNewElement() {
+console.log("working")
+	var newInput = document.createElement('td');
+	newInput.innerHTML = "
+                <label>Ingredient</label>
+                <input style="width: 10%" type="text" th:field="*{ingredients}" required/>
+                <label>Amount</label>
+                <input style="width: 10%" type="number" th:field="*{ingredient_amounts}" required/>
+                <label>Measurement</label>
+                <select style="width: 10%" th:field="*{measurement_labels}" required>
+                    <option th:value="Milliliter">Milliliter</option>
+                    <option th:value="Liter">Liter</option>
+                    <option th:value="Teaspoon">Teaspoon</option>
+                    <option th:value="Tablespoon">Tablespoon</option>
+                    <option th:value="Cup">Cup</option>
+                    <option th:value="Pint">Pint</option>
+                    <option th:value="Quart">Quart</option>
+                    <option th:value="Gallon">Gallon</option>
+                    <option th:value="Milligram">Milligram</option>
+                    <option th:value="Gram">Gram</option>
+                    <option th:value="Kilogram">Kilogram</option>
+                    <option th:value="Ounce">Ounce</option>
+                    <option th:value="Pound">Pound</option>
+                    <option th:value="Whole">Whole</option>
+                </select>";
+	document.getElementById("addIngredients").appendChild(newInput);
+}
+
+</script>
+</body>
+
+</html>

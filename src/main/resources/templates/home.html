@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+<link rel="stylesheet" href="/css/home.css">
+<title>Home</title>
+</head>
+<body>
+	<div th:insert="navbar :: navbar"></div>
+	<h1>Hello and welcome!</h1>
+	<br>
+	<h4 sec:authorize="isAnonymous()">Thanks for checking us out!</h4>
+	<h4 sec:authorize="isAuthenticated()">
+		Good to see you again <span style="font-size:xx-large;"
+			th:text="${#strings.arraySplit(#authentication.getPrincipal().getUsername(), '@')[0]}"></span>!
+	</h4>
+	<br>
+	<h4>Ready to jump right in? Here are the types of meals we have available:</h4>
+	<table>
+		<tr><td><a th:href="@{recipes/breakfast}">Breakfast</a></td></tr>
+		<tr><td><a th:href="@{recipes/lunch}">Lunch</a></td></tr>
+		<tr><td><a th:href="@{recipes/dinner}">Dinner</a></td></tr>
+		<tr><td><a th:href="@{recipes/dessert}">Dessert</a></td></tr>
+		<tr><td><a th:href="@{recipes/beverages}">Beverage</a></td>
+		<tr><td><a th:href="@{recipes/other}">Other</a></td></tr>
+	</table>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <title>Sign In</title>
+</head>
+
+<body>
+<form th:action="@{/login}" method="POST">
+  <table style="width: 30%;">
+    <tr style="height: 5%; text-align: center;">
+      <td colspan=2 style="font-size: 1.2rem;"><h2>Login</h2></td>
+    </tr>
+    <tr>
+      <td>Email:</td>
+      <td><input type="text" id="username" name="username"
+                 placeholder="user@example.com" required /></td>
+    </tr>
+    <tr>
+      <td>Password:</td>
+      <td><input type="password" id="password" name="password"
+                 placeholder="Password" required /></td>
+    </tr>
+    <tr>
+      <td><button name="login-submit" id="login-submit" type="submit">Log
+        In</button></td>
+    <tr>
+      <td colspan=2><span style="font-size: 15px;">New to the
+						scene? <a class="sub-user" href="/" th:href="@{/registration}">Register
+							here</a>
+				</span></td>
+    </tr>
+  </table>
+</form>
+<br>
+
+<div th:if="${param.error}">
+  <div class="alert alert-info center">Invalid username or
+    password!</div>
+</div>
+
+<div th:if="${param.logout}">
+  <div class="alert alert-info center">Have a great day!</div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,188 @@
+@import
+	url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap')
+	;
+
+* {
+	font-family: 'Roboto', sans-serif;
+	font-size:large;
+}
+
+html {
+	height: 100%;
+	background: url("/img/waltonhall.jpg");
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-size: cover;
+}
+
+.nav-link{
+	color:white;
+}
+
+.username{
+	color:white;
+}
+
+.username:hover {
+	background-color: #333;
+}
+
+#header{
+	width:fit-content;
+	padding:1% 3% 1% 3%;
+	margin:auto;
+	background-color: rgb(30, 30, 30, 90%);
+	box-shadow: 5px 5px 5px black;
+	border-radius: 20px;
+	margin-top:5rem;
+}
+
+#header h1{
+	font-size:200%;
+}
+
+body {
+	width: 70%;
+	min-width:400px;
+	margin: auto;
+	margin-top: 5rem;
+	margin-bottom: 0px;
+	padding-top: 10px;
+	min-height: 180%;
+	color: white;
+	text-align: center;
+}
+
+ul {
+	position: fixed;
+	left: 0px;
+	top: 0px;
+	width: 100%;
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+	background-color: #333;
+	list-style-type: none;
+}
+
+li {
+	float: left;
+}
+
+li a {
+	display: block;
+	color: white;
+	text-align: center;
+	padding: 14px 16px;
+	text-decoration: none;
+}
+
+li a:hover {
+	background-color: #111;
+}
+
+table {
+	margin: auto;
+	margin-top: 5%;
+	background-color: rgb(30, 30, 30, 90%);
+	box-shadow: 5px 5px 5px black;
+	border-radius: 20px;
+	width:60%;
+	min-width:400px;
+}
+
+tr {
+	width:100%;
+	padding: 1rem;
+	margin: 1rem 1rem 1rem 1rem;
+	text-align: center;
+	align-items: center;
+}
+
+#whatever {
+	margin:auto;
+	width:65%;
+	display:flex;
+	justify-content:space-around;
+	text-align:left;
+	margin-bottom:5%;
+}
+
+#lists{
+	outline:1px solid black;
+}
+
+#horizontal{
+	width:110%;
+}
+
+#header{
+	margin-top:5%;
+}
+
+#instruct_header{
+	width:40%;;
+	margin:auto;
+	margin-top:2%;
+	padding:1%;
+	background-color: rgb(30, 30, 30, 90%);
+	box-shadow: 5px 5px 5px black;
+	border-radius: 20px;
+}
+
+#instruct_header h3 {
+	font-size:200%;
+	margin-top:0%;
+	margin-bottom:0%;
+}
+
+#instruct_header h2 {
+	color:rgb(170, 20, 20);
+	margin-top:0%;
+	margin-bottom:0%;
+}
+
+textarea{
+	resize:none;
+	border:none;
+	margin:auto;
+	margin-top:2%;
+	margin-bottom:2%;
+	color:white;
+	padding:2%;
+	text-align:left;
+	background-color: rgb(30, 30, 30, 90%);
+	box-shadow: 5px 5px 5px black;
+	border-radius: 20px;
+}
+
+#button{
+	border-radius:20px;
+	padding:10px;
+	font-size:large;
+	border:none;
+	transition:1s;
+	color:white;
+	background-color:rgb(170, 20, 20);
+}
+
+#button:hover{
+	background-color:#171717;
+	transition:1s
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background-color: transparent;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.4);
+    border-radius: 10px;
+}

@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+</head>
+<body>
+<h1>Hello and welcome!</h1>
+<div sec:authorize="isAnonymous()">Thanks for checking us out!</div>
+<div sec:authorize="isAuthenticated()">Good to see you again <span th:text="${#strings.arraySplit(#authentication.getPrincipal().getUsername(), '@')[0]}"></span>!</div>
+</body>
+</html>

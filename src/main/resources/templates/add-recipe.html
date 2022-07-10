@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+
+<head>
+<link rel="stylesheet" href="/css/styles.css">
+<title>New Recipe</title>
+</head>
+
+<body>
+	<div th:insert="navbar :: navbar"></div>
+	<form action="#" th:action="@{/recipes/add}" th:object="${recipe}"
+		method="POST" id="addRecipeForm">
+		<table>
+			<tr>
+				<td><h1>New Recipe</h1></td>
+			</tr>
+			<tr>
+				<td><label>Recipe Name:</label> <input type="text"
+					th:field="*{name}" placeholder="Falafel" /></td>
+				<td><label>Recipe Type:</label> <select
+					th:field="*{recipeType}">
+						<option th:value="Breakfast">Breakfast</option>
+						<option th:value="Lunch">Lunch</option>
+						<option th:value="Dinner">Dinner</option>
+						<option th:value="Dessert">Dessert</option>
+						<option th:value="Snack">Snack</option>
+						<option th:value="Beverage">Beverage</option>
+						<option th:value="Other">Other</option>
+				</select></td>
+			</tr>
+			<tr>
+				<td><label>Link to image:</label> <input style="width:40%;" th:field="*{image}" placeholder="https://example.com/image.jpg"/>
+				</td>
+			</tr>
+			<tr>
+				<td><input type="button" onclick="createNewElement()"
+					value="Add More Rows" id="button" /></td>
+			</tr>
+			<tr>
+				<td id="addIngredients">
+					<div id="target0">
+						<br> <label>Ingredient:</label><input type='text'
+							th:field='*{ingredients}' id="ingredients, finalIng"
+							placeholder="Ingredient" /><label>Amount:</label><input
+							type='number' step=".1" id='ingredient_amounts' placeholder="0.5" /><input
+							style="display: none" type="text"
+							th:field='*{ingredient_amounts}' id='finalIngAmt' /><label>Measurement:</label><select
+							required id='measurement_labels'><option
+								th:value='Milliliter' selected>Milliliter</option>
+							<option th:value='Liter'>Liter</option>
+							<option th:value='Teaspoon'>Teaspoon</option>
+							<option th:value='Tablespoon'>Tablespoon</option>
+							<option th:value='Cup'>Cup</option>
+							<option th:value='Pint'>Pint</option>
+							<option th:value='Quart'>Quart</option>
+							<option th:value='Gallon'>Gallon</option>
+							<option th:value='Milligram'>Milligram</option>
+							<option th:value='Gram'>Gram</option>
+							<option th:value='Kilogram'>Kilogram</option>
+							<option th:value='Ounce'>Ounce</option>
+							<option th:value='Pound'>Pound</option>
+							<option th:value='Whole'>Whole</option>
+							<option th:value='Separated'>Separated</option></select> <input
+							style="display: none" type="text"
+							th:field='*{measurement_labels}' id="finalMeas" />
+						<button style='margin-left: 5px;' onclick='deleteRow()'>Delete</button>
+					</div>
+				</td>
+			</tr>
+			<tr>
+				<td><label>Instructions:</label> <textarea
+						th:field="*{instructions}"
+						placeholder="A general description of how to make the dish..."></textarea></td>
+			</tr>
+			<tr>
+				<td><input type="text" th:field="*{user_email}" id="user_email"
+					style="display: none" />Submitting as
+					[[${#authentication.getPrincipal().getUsername()}]]</td>
+			</tr>
+			<tr>
+				<td><input type="button" onclick="finalize()" value="Submit"
+					id="button" /></td>
+			</tr>
+			<tr>
+				<td th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></td>
+			</tr>
+			<tr>
+				<td th:if="${#fields.hasErrors('ingredients')}"
+					th:errors="*{ingredients}"></td>
+			</tr>
+			<tr>
+				<td th:if="${#fields.hasErrors('ingredient_amounts')}"
+					th:errors="*{ingredient_amounts}"></td>
+			</tr>
+			<tr>
+				<td th:if="${#fields.hasErrors('instructions')}"
+					th:errors="*{instructions}"></td>
+			</tr>
+			<tr>
+				<td th:if="${#fields.hasErrors('image')}" th:errors="*{image}"></td>
+			</tr>
+		</table>
+	</form>
+	<script th:inline="javascript">
+			var count=0
+		function createNewElement() {
+				
+			count++
+				
+			var newInput = document.createElement('div');
+			
+			newInput.id="target" + count
+
+			newInput.innerHTML = "<br><label>Ingredient:</label><input  type='text' id='ingredients' placeholder='Ingredient'/>"
+					+ "<label>Amount:</label><input  type='number' step='.1' id='ingredient_amounts' placeholder='0.5'/>"
+					+ "<label>Measurement:</label><select id='measurement_labels'>"
+					+ "<option th:value='Milliliter' selected>Milliliter</option>"
+					+ "<option th:value='Liter'>Liter</option><option th:value='Teaspoon'>Teaspoon</option>"
+					+ "<option th:value='Tablespoon'>Tablespoon</option><option th:value='Cup'>Cup</option>"
+					+ "<option th:value='Pint'>Pint</option><option th:value='Quart'>Quart</option>"
+					+ "<option th:value='Gallon'>Gallon</option><option th:value='Milligram'>Milligram</option>"
+					+ "<option th:value='Gram'>Gram</option><option th:value='Kilogram'>Kilogram</option>"
+					+ "<option th:value='Ounce'>Ounce</option><option th:value='Pound'>Pound</option>"
+					+ "<option th:value='Whole'>Whole</option>"
+					+ "<option th:value='Separated'>Separated</option></select>"
+					+ "<button onclick='deleteCurrent(" + count + ")' style='margin-left:5px;'>Delete</button>";
+
+			document.getElementById("addIngredients").appendChild(newInput);
+
+		}
+		
+		window.onload=function(){
+			var emailField = document.getElementById("user_email");
+			var currentUser = [[${#authentication.getPrincipal().getUsername()}]];
+			emailField.value = currentUser
+		}
+		
+		var form = document.getElementById("addRecipeForm")
+
+		function finalize() {
+			var allInputs = document.getElementsByTagName("input")
+			var ingredientString = ""
+			var ingredientAmountString = ""
+			for (var i = 0; i < allInputs.length; i++) {
+				if (allInputs[i].id != null && allInputs[i].id == "ingredients"
+						|| allInputs[i].id == "ingredients, finalIng") {
+					ingredientString += allInputs[i].value + ", "
+				} else if (allInputs[i].id != null
+						&& allInputs[i].id == "ingredient_amounts") {
+					ingredientAmountString += allInputs[i].value + ", "
+				}
+			}
+
+			var measurementString = ""
+			var allSelects = document.getElementsByTagName("select")
+			for (var i = 0; i < allSelects.length; i++) {
+				if (allSelects[i].id != null
+						&& allSelects[i].id == "measurement_labels") {
+					measurementString += allSelects[i].value + ", "
+				}
+			}
+
+			var finalIng = document.getElementById("ingredients, finalIng")
+			finalIng.value = ingredientString.slice(0, -2)
+
+			var finalIngAmt = document.getElementById("finalIngAmt")
+			finalIngAmt.value = ingredientAmountString.slice(0, -2)
+
+			var finalMeas = document.getElementById("finalMeas")
+			finalMeas.value = measurementString.slice(0, -2)
+
+			form.submit()
+			form.clear()
+		}
+		
+		function deleteCurrent(num){
+			event.preventDefault()
+			target = document.getElementById("target" + num)
+			target.remove()
+		}
+		
+	</script>
+</body>
+
+</html>

@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+<link rel="stylesheet" href="/css/recipelist.css">
+<title>Recipes</title>
+<style>
+#links {
+	margin: auto;
+	width: 100%;
+}
+
+#links tr {
+	height: 2rem;
+	width: 8rem;
+	transition: 1s;
+}
+
+#links td {
+	display: block;
+	float: left;
+	width: 100%;
+	height: 100%;
+}
+
+#links tr:hover {
+	background-color: rgb(170, 50, 50);
+	transition: 1s;
+}
+
+#links a {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100%;
+	width: 100%;
+	text-decoration: none;
+	color: white;
+	font-size: xx-large;
+}
+
+#selected {
+	background-color: rgb(170, 50, 50);
+	transition:.5s;
+}
+
+#links #selected:hover {
+	background-color: #171717;
+	transition:.5s;
+}
+</style>
+</head>
+<body>
+	<div th:insert="navbar :: navbar"></div>
+	<br>
+	<div id="header">
+		<h1>Recipes</h1>
+	</div>
+	<br>
+	<div sec:authorize="isAuthenticated()">
+		<form sec:authorize="hasAnyRole('ROLE_USER', 'ROLE_ADMIN')"
+			th:action="@{/recipes/add}" method="GET">
+			<input type="submit" value="Add Recipe" id="button" />
+		</form>
+	</div>
+	<br>
+
+	<table id="links">
+
+		<tr id="breakfast">
+			<td><a th:href="@{/recipes/breakfast}">Breakfast</a></td>
+		</tr>
+
+		<tr id="lunch">
+			<td><a th:href="@{/recipes/lunch}">Lunch</a></td>
+		</tr>
+
+		<tr id="dinner">
+			<td><a th:href="@{/recipes/dinner}">Dinner</a></td>
+		</tr>
+
+		<tr id="dessert">
+			<td><a th:href="@{/recipes/dessert}">Dessert</a></td>
+		</tr>
+		
+		<tr id="beverage">
+			<td><a th:href="@{/recipes/beverage}">Beverage</a></td>
+		</tr>
+
+		<tr id="other">
+			<td><a th:href="@{/recipes/other}">Other</a></td>
+		</tr>
+
+	</table>
+
+	<table>
+		<tr th:each="recipes:${recipes}">
+			<td th:text="${recipes.getName()}"></td>
+			<td style="display:flex;justify-content:center;"><img th:src="@{{img}(img=${recipes.image})}"onerror="this.style.display='none'" /></td>
+			<td>
+				<form class="add-btn-form" th:action="@{/recipes/{id}(id=${recipes.recipeId})}"
+					method="GET">
+					<input class="add-btn" type="submit" value="View Recipe" id="button" />
+				</form>
+			</td>
+		</tr>
+	</table>
+	
+	<script>
+		window.onload = function() {
+			var tag = window.location.href.split("/")
+			var location = tag[tag.length - 1]
+			if (location == "breakfast") {
+				document.getElementById("breakfast").id = "selected";
+			} else if (location == "lunch") {
+				document.getElementById("lunch").id = "selected";
+			} else if (location == "dinner") {
+				document.getElementById("dinner").id = "selected";
+			} else if (location == "dessert") {
+				document.getElementById("dessert").id = "selected";
+			} else if (location == "other") {
+				document.getElementById("other").id = "selected";
+			}
+		}
+	</script>
+</body>
+</html>

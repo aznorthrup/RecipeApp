@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+<link rel="stylesheet" href="/css/recipepage.css">
+<title>Recipe</title>
+</head>
+<body>
+	<div th:insert="navbar :: navbar"></div>
+	<div id="header">
+		<h1 th:text="${recipe.getName()}"></h1>
+	</div>
+	<table id="recipe">
+		<tr>
+			<td>
+				<h4 th:if="${recipe.getUser_email() != 'barb@barb.com'}" th:text="'Crafted with love by ' + ${#strings.arraySplit(recipe.getUser_email(), '@')[0]}"></h4>
+				<h4 th:if="${recipe.getUser_email() == 'barb@barb.com'}" th:text="'Crafted with love by Grandma Barb'"></h4>
+			<td>
+			<td><img th:src="@{{img}(img=recipes.image)}"onerror="this.style.display='none'" /></td>
+		</tr>
+		<tr>
+			<td id="whatever">
+				<div>
+					<h2 align="center">Ingredients:</h2>
+					<hr id="horizontal">
+					<div th:each="ingredients:${ingredients}">
+						<h1 th:text="${ingredients}"></h1>
+						<hr id="horizontal">
+					</div>
+				</div>
+				<hr>
+				<div>
+					<h2 align="center">Amounts:</h2>
+					<hr id="horizontal">
+					<div th:each="ingredient_amounts:${ingredient_amounts}">
+						<h1 th:text="${ingredient_amounts}"></h1>
+						<hr id="horizontal">
+					</div>
+				</div>
+				<hr>
+				<div>
+					<h2 align="center">Measurements:</h2>
+					<hr id="horizontal">
+					<div th:each="measurement_labels:${measurement_labels}">
+						<h1 th:text="${measurement_labels}"></h1>
+						<hr id="horizontal">
+					</div>
+				</div>
+			</td>
+		</tr>
+	</table>
+	<div id="instruct_header">
+	<h3>Instructions</h3>
+	<h2>(click to expand)</h2>
+	</div>
+	<textarea readonly="readonly" style="height: 5%; width: 60%;overflow:hidden;"
+		th:text="${recipe.getInstructions}" id="instructions"></textarea>
+	<br>
+	<div sec:authorize="isAuthenticated()">
+		<form th:if="${#authentication.getPrincipal().getUsername() == recipe.getUser_email()}"
+			th:action="@{/recipes/update/{id}(id=${recipe.recipeId})}"
+			method="GET">
+			<input type="submit" value="Edit Recipe" id="button" />
+		</form>
+		<br>
+		<form th:if="${#authentication.getPrincipal().getUsername() == recipe.getUser_email()}"
+			th:action="@{/recipes/delete/{id}(id=${recipe.recipeId})}"
+			method="GET">
+			<input type="submit" value="Delete Recipe" id="button" />
+		</form>
+	</div>
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+	<script>
+		$(document).ready(function() {
+			$('textarea').on('click', function() {
+				$(this).height(0);
+				$(this).height(this.scrollHeight);
+				$(this).width('60%');
+			});
+		});
+	</script>
+</body>
+</html>

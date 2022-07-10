@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+<link rel="stylesheet" href="/css/styles.css">
+<title>NavigationBar</title>
+
+</head>
+<body>
+
+	<nav th:fragment="navbar"
+		class="navbar navbar-expand-md bg-dark navbar-dark">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<a class="navbar-brand" th:href="@{/}"></a>
+			</div>
+			<ul class="nav navbar-nav">
+				<li><a class="nav-link" th:href="@{'/'}">Home</a></li>
+			
+				<li><a class="nav-link" th:href="@{/recipes}">All Recipes</a></li>
+
+				<li><a class="nav-link" th:href="@{/recipes/barb}">Barb's Recipes</a></li>
+
+				<li><a class="nav-link" th:href="@{/about}">About</a></li>
+
+				<li style="float: right;"><a sec:authorize="isAuthenticated()"
+					class="nav-link" th:href="@{/logout}">Sign Out</a></li>
+
+				<li style="float: right;"><a sec:authorize="isAnonymous()"
+					class="nav-link" th:href="@{/login}">Sign In</a></li>
+
+				<li style="float: right;"><a class="nav-link, username"
+					sec:authorize="isAnonymous()">Welcome stranger</a> <a
+					sec:authorize="isAuthenticated()" class="nav-link, username"
+					th:text="'Logged in as' + ' ' + ${#authentication.getPrincipal().getUsername()}"></a></li>
+			</ul>
+		</div>
+	</nav>
+
+</body>
+</html>
