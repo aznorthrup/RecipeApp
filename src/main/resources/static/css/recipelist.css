@@ -15,19 +15,56 @@ html {
 	background-size: cover;
 }
 
-@media ( max-width:1000px) {
-	html {
-		background-size: auto;
-	}
+body {
+	width: 70%;
+	min-width: 450px;
+	margin: auto;
+	margin-bottom: 0px;
+	padding-top: 10px;
+	min-height: 180%;
+	color: white;
+	text-align: center;
 }
 
-
-.nav-link{
-	color:white;
+ul {
+	position: fixed;
+	left: 0px;
+	top: 0px;
+	width: 100%;
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+	background-color: #333;
+	list-style-type: none;
+	height:80px;
 }
 
-.username{
-	color:white;
+li {
+	float: left;
+}
+
+li a {
+	display: block;
+	color: white;
+	text-align: center;
+	padding: 20px 16px;
+	text-decoration: none;
+	height:80px;
+	text-align:center;
+	font-size:25px;
+}
+
+li a:hover {
+	background-color: #111;
+}
+
+.nav-link {
+	color: white;
+}
+
+.username {
+	color: white;
 }
 
 .username:hover {
@@ -37,7 +74,7 @@ html {
 table {
 	margin: auto;
 	margin-top: 10%;
-	min-width:400px;
+	min-width: 450px;
 }
 
 tr {
@@ -60,17 +97,6 @@ td {
 	display: inline-block;
 	text-align: center;
 	align-items: center;
-}
-
-body {
-	width: 70%;
-	min-width:400px;
-	margin: auto;
-	margin-bottom: 0px;
-	padding-top: 10px;
-	min-height: 180%;
-	color: white;
-	text-align: center;
 }
 
 #header{
@@ -100,35 +126,6 @@ body {
 #button:hover{
 	background-color:#171717;
 	transition:1s
-}
-
-ul {
-	position: fixed;
-	left: 0px;
-	top: 0px;
-	width: 100%;
-	list-style-type: none;
-	margin: 0;
-	padding: 0;
-	overflow: hidden;
-	background-color: #333;
-	list-style-type: none;
-}
-
-li {
-	float: left;
-}
-
-li a {
-	display: block;
-	color: white;
-	text-align: center;
-	padding: 14px 16px;
-	text-decoration: none;
-}
-
-li a:hover {
-	background-color: #111;
 }
 
 img {
