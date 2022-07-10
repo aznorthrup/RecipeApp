@@ -120,7 +120,7 @@ td {
 	border:none;
 	transition:1s;
 	color:white;
-	background-color:rgb(170, 20, 20);
+	background-color:rgb(60, 60, 170);
 }
 
 #button:hover{
@@ -149,7 +149,7 @@ img {
 	border: none;
 	color: white;
 	font-size: 18px;
-	background-color: rgb(170, 20, 20);
+	background-color: rgb(60, 60, 170);
 	transition:1s;
 }
 

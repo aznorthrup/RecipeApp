@@ -142,7 +142,7 @@ tr {
 }
 
 #instruct_header h2 {
-	color:rgb(170, 20, 20);
+	color:rgb(60, 60, 170);
 	margin-top:0%;
 	margin-bottom:0%;
 }
@@ -168,7 +168,7 @@ textarea{
 	border:none;
 	transition:1s;
 	color:white;
-	background-color:rgb(170, 20, 20);
+	background-color:rgb(60, 60, 170);
 }
 
 #button:hover{
