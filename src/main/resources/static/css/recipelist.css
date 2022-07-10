@@ -15,6 +15,13 @@ html {
 	background-size: cover;
 }
 
+@media ( max-width:1000px) {
+	html {
+		background-size: auto;
+	}
+}
+
+
 .nav-link{
 	color:white;
 }
